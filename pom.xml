@@ -141,5 +141,6 @@
 	<modules>
 		<module>gez-common</module>
 		<module>gez-weChatApplet</module>
+		<module>gez-eureka</module>
 	</modules>
 </project>
