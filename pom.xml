@@ -18,6 +18,8 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<spring-cloud-version>Hoxton.SR3</spring-cloud-version>
+		<spring-cloud-eureka>2.2.5.RELEASE</spring-cloud-eureka>
 	</properties>
 
 	<dependencies>
@@ -127,8 +129,28 @@
 			<artifactId>gson</artifactId>
 			<version>2.8.6</version>
 		</dependency>
-
 	</dependencies>
+	
+	<!-- dependencyManagement中的依赖仅进行声明,不进行引入, 一般出现在父级pom中, 同一版本号, 子项目引入依赖的时候不用再显式声明版本号 -->
+	<dependencyManagement>
+		<dependencies>
+			<!--spring-cloud -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud-version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!-- eureka -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+			<version>${spring-cloud-eureka}</version>
+		</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
 	<build>
 		<plugins>
 			<plugin>
